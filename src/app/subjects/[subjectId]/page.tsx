@@ -2,7 +2,6 @@
 
 import { use } from 'react';
 import { getSubjectById } from '@/data/subjects';
-import { rulesOfTheAirBasics } from '@/data/lessons/air-law/rules-of-the-air-basics';
 import Link from 'next/link';
 import { ProgressBar } from '@/components/ProgressBar';
 
@@ -20,11 +19,6 @@ export default function SubjectPage({
         <h1 className="text-2xl font-bold text-slate-900">Subject not found</h1>
       </div>
     );
-  }
-
-  // For Air Law, add the first lesson to the first topic
-  if (subject.id === 'air-law' && subject.topics[0].lessons.length === 0) {
-    subject.topics[0].lessons.push(rulesOfTheAirBasics);
   }
 
   const totalLessons = subject.topics.reduce((sum, topic) => sum + topic.lessons.length, 0);

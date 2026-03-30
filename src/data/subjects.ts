@@ -1,4 +1,5 @@
 import { Subject } from '@/types';
+import { rulesOfTheAirBasics } from './lessons/air-law/rules-of-the-air-basics';
 
 export const subjects: Subject[] = [
   {
@@ -16,7 +17,7 @@ export const subjects: Subject[] = [
         subjectId: 'air-law',
         name: 'Rules of the Air',
         description: 'Right of way, circuit procedures, and collision avoidance',
-        lessons: [],
+        lessons: [rulesOfTheAirBasics],
       },
       {
         id: 'airspace-classification',
