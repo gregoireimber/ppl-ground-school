@@ -1,13 +1,52 @@
 import { Subject } from '@/types';
+
+// Air Law
 import { rulesOfTheAirBasics } from './lessons/air-law/rules-of-the-air-basics';
+import { airspaceClassificationBasics } from './lessons/air-law/airspace-classification-basics';
+import { licensingRequirementsBasics } from './lessons/air-law/licensing-requirements-basics';
+import { icaoRegulationsBasics } from './lessons/air-law/icao-regulations-basics';
+
+// Operational Procedures
 import { emergencyProceduresBasics } from './lessons/operational-procedures/emergency-procedures-basics';
+import { airfieldOperationsBasics } from './lessons/operational-procedures/airfield-operations-basics';
+import { preFlightProceduresBasics } from './lessons/operational-procedures/pre-flight-procedures-basics';
+import { fuelManagementBasics } from './lessons/operational-procedures/fuel-management-basics';
+
+// Human Performance & Limitations
 import { aviationPhysiologyBasics } from './lessons/human-performance/aviation-physiology-basics';
+import { decisionMakingBasics } from './lessons/human-performance/decision-making-basics';
+import { fitnessToFlyBasics } from './lessons/human-performance/fitness-to-fly-basics';
+
+// Navigation & Radio Aids
 import { deadReckoningBasics } from './lessons/navigation/dead-reckoning-basics';
+import { chartReadingBasics } from './lessons/navigation/chart-reading-basics';
+import { radioNavigationBasics } from './lessons/navigation/radio-navigation-basics';
+
+// Meteorology
 import { weatherSystemsBasics } from './lessons/meteorology/weather-systems-basics';
+import { metarTafBasics } from './lessons/meteorology/metar-taf-basics';
+import { vfrWeatherBasics } from './lessons/meteorology/vfr-weather-basics';
+import { weatherHazardsBasics } from './lessons/meteorology/weather-hazards-basics';
+
+// Aircraft General Knowledge
 import { pistonEnginesBasics } from './lessons/aircraft-general/piston-engines-basics';
+import { flightInstrumentsBasics } from './lessons/aircraft-general/flight-instruments-basics';
+import { airframeSystemsBasics } from './lessons/aircraft-general/airframe-systems-basics';
+
+// Flight Performance & Planning
 import { massBalanceBasics } from './lessons/flight-performance/mass-balance-basics';
-import { rtPhraseologyBasics } from './lessons/communications/rt-phraseology-basics';
+import { takeoffLandingPerformanceBasics } from './lessons/flight-performance/takeoff-landing-performance-basics';
+import { fuelPlanningBasics } from './lessons/flight-performance/fuel-planning-basics';
+
+// Principles of Flight
 import { fourForcesBasics } from './lessons/principles-of-flight/four-forces-basics';
+import { airfoilsLiftBasics } from './lessons/principles-of-flight/airfoils-lift-basics';
+import { stallingStabilityBasics } from './lessons/principles-of-flight/stalling-stability-basics';
+
+// Communications
+import { rtPhraseologyBasics } from './lessons/communications/rt-phraseology-basics';
+import { emergencyCommunicationsBasics } from './lessons/communications/emergency-communications-basics';
+import { frequencyManagementBasics } from './lessons/communications/frequency-management-basics';
 
 export const subjects: Subject[] = [
   {
@@ -32,21 +71,21 @@ export const subjects: Subject[] = [
         subjectId: 'air-law',
         name: 'Airspace Classification',
         description: 'UK airspace structure and VFR requirements',
-        lessons: [],
+        lessons: [airspaceClassificationBasics],
       },
       {
         id: 'licensing-requirements',
         subjectId: 'air-law',
         name: 'Licensing Requirements',
         description: 'PPL privileges, limitations, and currency requirements',
-        lessons: [],
+        lessons: [licensingRequirementsBasics],
       },
       {
         id: 'icao-regulations',
         subjectId: 'air-law',
         name: 'ICAO and National Regulations',
         description: 'International and UK regulatory framework',
-        lessons: [],
+        lessons: [icaoRegulationsBasics],
       },
     ],
   },
@@ -72,21 +111,21 @@ export const subjects: Subject[] = [
         subjectId: 'operational-procedures',
         name: 'Airfield Operations',
         description: 'Taxiing, runway operations, and airfield lighting',
-        lessons: [],
+        lessons: [airfieldOperationsBasics],
       },
       {
         id: 'pre-flight-procedures',
         subjectId: 'operational-procedures',
         name: 'Pre-Flight Procedures',
         description: 'Aircraft inspection, fuel planning, and documentation',
-        lessons: [],
+        lessons: [preFlightProceduresBasics],
       },
       {
         id: 'fuel-management',
         subjectId: 'operational-procedures',
         name: 'Fuel Management',
         description: 'Fuel planning, reserves, and endurance calculations',
-        lessons: [],
+        lessons: [fuelManagementBasics],
       },
     ],
   },
@@ -112,14 +151,14 @@ export const subjects: Subject[] = [
         subjectId: 'human-performance',
         name: 'Decision Making',
         description: 'Hazardous attitudes, crew resource management, and risk assessment',
-        lessons: [],
+        lessons: [decisionMakingBasics],
       },
       {
         id: 'fitness-to-fly',
         subjectId: 'human-performance',
         name: 'Fitness to Fly',
         description: 'Medical factors, alcohol, fatigue, and the IMSAFE checklist',
-        lessons: [],
+        lessons: [fitnessToFlyBasics],
       },
     ],
   },
@@ -145,14 +184,14 @@ export const subjects: Subject[] = [
         subjectId: 'navigation',
         name: 'Chart Reading',
         description: 'Chart symbols, scale, airspace depiction, and VRPs',
-        lessons: [],
+        lessons: [chartReadingBasics],
       },
       {
         id: 'radio-navigation',
         subjectId: 'navigation',
         name: 'Radio Navigation',
         description: 'VOR, NDB, GPS, and other navigation aids',
-        lessons: [],
+        lessons: [radioNavigationBasics],
       },
     ],
   },
@@ -178,21 +217,21 @@ export const subjects: Subject[] = [
         subjectId: 'meteorology',
         name: 'METAR and TAF',
         description: 'Weather reports and forecasts interpretation',
-        lessons: [],
+        lessons: [metarTafBasics],
       },
       {
         id: 'vfr-weather',
         subjectId: 'meteorology',
         name: 'VFR Weather Minima',
         description: 'Visibility, cloud base, and VFR flight requirements',
-        lessons: [],
+        lessons: [vfrWeatherBasics],
       },
       {
         id: 'weather-hazards',
         subjectId: 'meteorology',
         name: 'Weather Hazards',
         description: 'Icing, turbulence, fog, and thunderstorms',
-        lessons: [],
+        lessons: [weatherHazardsBasics],
       },
     ],
   },
@@ -218,14 +257,14 @@ export const subjects: Subject[] = [
         subjectId: 'aircraft-general',
         name: 'Flight Instruments',
         description: 'ASI, altimeter, VSI, gyroscopic instruments',
-        lessons: [],
+        lessons: [flightInstrumentsBasics],
       },
       {
         id: 'airframe-systems',
         subjectId: 'aircraft-general',
         name: 'Airframe & Control Systems',
         description: 'Control surfaces, flaps, trim, primary and secondary controls',
-        lessons: [],
+        lessons: [airframeSystemsBasics],
       },
     ],
   },
@@ -251,14 +290,14 @@ export const subjects: Subject[] = [
         subjectId: 'flight-performance',
         name: 'Takeoff & Landing Performance',
         description: 'Density altitude, runway slope, wind component effects',
-        lessons: [],
+        lessons: [takeoffLandingPerformanceBasics],
       },
       {
         id: 'fuel-planning',
         subjectId: 'flight-performance',
         name: 'Fuel Planning',
         description: 'Fuel consumption, reserves, endurance calculations',
-        lessons: [],
+        lessons: [fuelPlanningBasics],
       },
     ],
   },
@@ -284,14 +323,14 @@ export const subjects: Subject[] = [
         subjectId: 'principles-of-flight',
         name: 'Airfoils & Lift Generation',
         description: 'Bernoulli\'s principle, angle of attack, coefficient of lift',
-        lessons: [],
+        lessons: [airfoilsLiftBasics],
       },
       {
         id: 'stalling-stability',
         subjectId: 'principles-of-flight',
         name: 'Stalling & Stability',
         description: 'Stall characteristics, recovery, longitudinal and lateral stability',
-        lessons: [],
+        lessons: [stallingStabilityBasics],
       },
     ],
   },
@@ -317,14 +356,14 @@ export const subjects: Subject[] = [
         subjectId: 'communications',
         name: 'Emergency Communications',
         description: 'Distress (MAYDAY), urgency (PAN PAN), radio failure',
-        lessons: [],
+        lessons: [emergencyCommunicationsBasics],
       },
       {
         id: 'frequency-management',
         subjectId: 'communications',
         name: 'Frequency Management',
         description: 'ATIS, tower, approach, ground frequencies and procedures',
-        lessons: [],
+        lessons: [frequencyManagementBasics],
       },
     ],
   },
