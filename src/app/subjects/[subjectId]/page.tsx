@@ -91,10 +91,10 @@ export default function SubjectPage({
           Practice Quiz
         </Link>
         <Link
-          href={`/subjects/${subject.id}/mock-exam`}
+          href={`/exam/${subject.id}`}
           className="px-6 py-3 bg-slate-200 text-slate-900 rounded-lg font-medium hover:bg-slate-300 transition-colors"
         >
-          Mock Exam
+          Take Mock Exam
         </Link>
       </div>
     </div>

@@ -33,10 +33,29 @@ export default function ProgressPage() {
   const overallScore =
     totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
 
+  // Calculate mock exam stats
+  const allMockAttempts = progress.subjects.flatMap((s) => s.mockExamAttempts);
+  const totalMockAttempts = allMockAttempts.length;
+  const totalMockCorrect = allMockAttempts.reduce((sum, a) => sum + a.correctAnswers, 0);
+  const totalMockQuestions = allMockAttempts.reduce((sum, a) => sum + a.questionsAttempted, 0);
+  const overallMockScore =
+    totalMockQuestions > 0 ? Math.round((totalMockCorrect / totalMockQuestions) * 100) : 0;
+
   // Get recent attempts across all subjects
   const recentAttempts = progress.subjects
     .flatMap((sp) =>
       sp.quizAttempts.map((attempt) => ({
+        ...attempt,
+        subjectId: sp.subjectId,
+      }))
+    )
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 10);
+
+  // Get recent mock exam attempts
+  const recentMockAttempts = progress.subjects
+    .flatMap((sp) =>
+      sp.mockExamAttempts.map((attempt) => ({
         ...attempt,
         subjectId: sp.subjectId,
       }))
@@ -138,6 +157,68 @@ export default function ProgressPage() {
           })}
         </div>
       </div>
+
+      {/* Mock Exam Statistics */}
+      {totalMockAttempts > 0 && (
+        <div className="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Mock Exam Statistics</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
+              <div className="text-3xl font-bold text-primary-600">{overallMockScore}%</div>
+              <div className="text-sm text-slate-600 mt-1">Average Score</div>
+            </div>
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
+              <div className="text-3xl font-bold text-slate-900">{totalMockAttempts}</div>
+              <div className="text-sm text-slate-600 mt-1">Exams Taken</div>
+            </div>
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
+              <div className="text-3xl font-bold text-slate-900">{totalMockQuestions}</div>
+              <div className="text-sm text-slate-600 mt-1">Questions Answered</div>
+            </div>
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
+              <div className="text-3xl font-bold text-green-600">{totalMockCorrect}</div>
+              <div className="text-sm text-slate-600 mt-1">Correct Answers</div>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-slate-900 mb-3">Recent Mock Exams</h3>
+          <div className="space-y-3">
+            {recentMockAttempts.map((attempt, index) => {
+              const subject = allSubjects.find((s) => s.id === attempt.subjectId);
+              const passMark = subject ? subject.examInfo.passMark : 75;
+              const passed = attempt.score >= passMark;
+              const attemptDate = new Date(attempt.date);
+
+              return (
+                <div
+                  key={`mock-${attempt.subjectId}-${index}`}
+                  className="flex items-center justify-between p-4 border border-slate-200 rounded-lg"
+                >
+                  <div>
+                    <div className="font-semibold text-slate-900">{subject?.name || 'Mock Exam'}</div>
+                    <div className="text-sm text-slate-600">
+                      {attemptDate.toLocaleDateString()} at {attemptDate.toLocaleTimeString()}
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      {attempt.correctAnswers} / {attempt.questionsAttempted} correct
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div
+                      className={`text-2xl font-bold ${
+                        passed ? 'text-green-600' : 'text-red-600'
+                      }`}
+                    >
+                      {attempt.score}%
+                    </div>
+                    <div className="text-xs text-slate-600">{passed ? 'PASSED' : 'FAILED'}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Recent Quiz Attempts */}
       {recentAttempts.length > 0 && (
