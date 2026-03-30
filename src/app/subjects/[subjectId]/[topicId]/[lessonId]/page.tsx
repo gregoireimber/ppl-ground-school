@@ -2,7 +2,7 @@
 
 import { use } from 'react';
 import Link from 'next/link';
-import { rulesOfTheAirBasics } from '@/data/lessons/air-law/rules-of-the-air-basics';
+import { getLessonById } from '@/data/lessons';
 
 export default function LessonPage({
   params,
@@ -10,14 +10,18 @@ export default function LessonPage({
   params: Promise<{ subjectId: string; topicId: string; lessonId: string }>;
 }) {
   const { subjectId, topicId, lessonId } = use(params);
-
-  // For now, only Air Law first lesson is available
-  const lesson = lessonId === 'rules-of-the-air-basics' ? rulesOfTheAirBasics : null;
+  const lesson = getLessonById(lessonId);
 
   if (!lesson) {
     return (
       <div className="max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold text-slate-900">Lesson not found</h1>
+        <Link
+          href={`/subjects/${subjectId}`}
+          className="text-sm text-primary-600 hover:text-primary-700 font-medium mt-4 inline-block"
+        >
+          ← Back to Subject
+        </Link>
       </div>
     );
   }
