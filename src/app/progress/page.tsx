@@ -74,34 +74,34 @@ export default function ProgressPage() {
         </Link>
       </div>
 
-      <h1 className="text-4xl font-bold text-slate-900 mb-8">Your Progress</h1>
+      <h1 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6 md:mb-8">Your Progress</h1>
 
       {/* Overall Stats */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Overall Statistics</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-3xl font-bold text-primary-600">{overallScore}%</div>
-            <div className="text-sm text-slate-600 mt-1">Overall Score</div>
+      <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+        <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Overall Statistics</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-primary-600">{overallScore}%</div>
+            <div className="text-xs md:text-sm text-slate-600 mt-1">Score</div>
           </div>
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-3xl font-bold text-slate-900">{totalAttempts}</div>
-            <div className="text-sm text-slate-600 mt-1">Quizzes Taken</div>
+          <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-slate-900">{totalAttempts}</div>
+            <div className="text-xs md:text-sm text-slate-600 mt-1">Quizzes</div>
           </div>
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-3xl font-bold text-slate-900">{totalQuestions}</div>
-            <div className="text-sm text-slate-600 mt-1">Questions Answered</div>
+          <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-slate-900">{totalQuestions}</div>
+            <div className="text-xs md:text-sm text-slate-600 mt-1">Questions</div>
           </div>
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-3xl font-bold text-green-600">{totalCorrect}</div>
-            <div className="text-sm text-slate-600 mt-1">Correct Answers</div>
+          <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+            <div className="text-2xl md:text-3xl font-bold text-green-600">{totalCorrect}</div>
+            <div className="text-xs md:text-sm text-slate-600 mt-1">Correct</div>
           </div>
         </div>
       </div>
 
       {/* Per-Subject Progress */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Subject Progress</h2>
+      <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+        <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Subject Progress</h2>
         <div className="space-y-4">
           {allSubjects.map((subject) => {
             const subjectProgress = progress.subjects.find((s) => s.subjectId === subject.id);
@@ -127,10 +127,10 @@ export default function ProgressPage() {
                 className="block p-4 border border-slate-200 rounded-lg hover:border-primary-300 hover:bg-slate-50 transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-slate-900">{subject.name}</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-slate-900">{subject.name}</h3>
                   {quizAttempts.length > 0 && (
                     <span
-                      className={`text-2xl font-bold ${
+                      className={`text-xl md:text-2xl font-bold ${
                         avgScore >= subject.examInfo.passMark
                           ? 'text-green-600'
                           : 'text-slate-600'
@@ -160,28 +160,28 @@ export default function ProgressPage() {
 
       {/* Mock Exam Statistics */}
       {totalMockAttempts > 0 && (
-        <div className="bg-white border border-slate-200 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Mock Exam Statistics</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="text-center p-4 bg-slate-50 rounded-lg">
-              <div className="text-3xl font-bold text-primary-600">{overallMockScore}%</div>
-              <div className="text-sm text-slate-600 mt-1">Average Score</div>
+        <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Mock Exam Statistics</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6">
+            <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold text-primary-600">{overallMockScore}%</div>
+              <div className="text-xs md:text-sm text-slate-600 mt-1">Avg Score</div>
             </div>
-            <div className="text-center p-4 bg-slate-50 rounded-lg">
-              <div className="text-3xl font-bold text-slate-900">{totalMockAttempts}</div>
-              <div className="text-sm text-slate-600 mt-1">Exams Taken</div>
+            <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold text-slate-900">{totalMockAttempts}</div>
+              <div className="text-xs md:text-sm text-slate-600 mt-1">Exams</div>
             </div>
-            <div className="text-center p-4 bg-slate-50 rounded-lg">
-              <div className="text-3xl font-bold text-slate-900">{totalMockQuestions}</div>
-              <div className="text-sm text-slate-600 mt-1">Questions Answered</div>
+            <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold text-slate-900">{totalMockQuestions}</div>
+              <div className="text-xs md:text-sm text-slate-600 mt-1">Questions</div>
             </div>
-            <div className="text-center p-4 bg-slate-50 rounded-lg">
-              <div className="text-3xl font-bold text-green-600">{totalMockCorrect}</div>
-              <div className="text-sm text-slate-600 mt-1">Correct Answers</div>
+            <div className="text-center p-3 md:p-4 bg-slate-50 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold text-green-600">{totalMockCorrect}</div>
+              <div className="text-xs md:text-sm text-slate-600 mt-1">Correct</div>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold text-slate-900 mb-3">Recent Mock Exams</h3>
+          <h3 className="text-base md:text-lg font-semibold text-slate-900 mb-3">Recent Mock Exams</h3>
           <div className="space-y-3">
             {recentMockAttempts.map((attempt, index) => {
               const subject = allSubjects.find((s) => s.id === attempt.subjectId);
@@ -222,8 +222,8 @@ export default function ProgressPage() {
 
       {/* Recent Quiz Attempts */}
       {recentAttempts.length > 0 && (
-        <div className="bg-white border border-slate-200 rounded-lg p-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Recent Quiz Attempts</h2>
+        <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-6">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Recent Quiz Attempts</h2>
           <div className="space-y-3">
             {recentAttempts.map((attempt, index) => {
               const subject = allSubjects.find((s) => s.id === attempt.subjectId);

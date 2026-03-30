@@ -97,9 +97,9 @@ export default function SubjectQuizPage({
 
       {!result ? (
         <>
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2">{subject.name} Quiz</h1>
-            <p className="text-lg text-slate-600">
+          <div className="mb-4 md:mb-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-slate-900 mb-2">{subject.name} Quiz</h1>
+            <p className="text-base md:text-lg text-slate-600">
               Test your knowledge with {quizQuestions.length} questions on {subject.name}
             </p>
           </div>
@@ -111,8 +111,8 @@ export default function SubjectQuizPage({
         </>
       ) : (
         <>
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-slate-900">{subject.name} Quiz Results</h1>
+          <div className="mb-4 md:mb-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-slate-900">{subject.name} Quiz Results</h1>
           </div>
           <QuizResults
             result={result}

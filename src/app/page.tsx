@@ -22,14 +22,14 @@ export default function HomePage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-slate-900 mb-2">PPL Ground School</h1>
-        <p className="text-lg text-slate-600">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-2xl md:text-4xl font-bold text-slate-900 mb-2">PPL Ground School</h1>
+        <p className="text-base md:text-lg text-slate-600">
           Master all 9 subjects for your UK Private Pilot License
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {subjects.map((subject) => (
           <SubjectCard
             key={subject.id}
@@ -39,9 +39,9 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="mt-12 p-6 bg-white border border-slate-200 rounded-lg">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">About the UK PPL(A) Exams</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-700">
+      <div className="mt-8 md:mt-12 p-4 md:p-6 bg-white border border-slate-200 rounded-lg">
+        <h2 className="text-lg md:text-xl font-bold text-slate-900 mb-4">About the UK PPL(A) Exams</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-sm text-slate-700">
           <div>
             <p className="font-semibold text-slate-900 mb-1">Total Questions</p>
             <p>120 questions across 9 subjects</p>

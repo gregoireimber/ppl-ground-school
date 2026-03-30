@@ -37,8 +37,8 @@ export default function LessonPage({
         </Link>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-lg p-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-8">{lesson.title}</h1>
+      <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-8">
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 md:mb-8">{lesson.title}</h1>
 
         <div className="prose prose-slate max-w-none">
           {lesson.content.map((block, index) => {
@@ -108,8 +108,8 @@ export default function LessonPage({
         </div>
 
         {lesson.keyPoints.length > 0 && (
-          <div className="mt-8 p-6 bg-slate-50 rounded-lg">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">Key Points</h2>
+          <div className="mt-6 md:mt-8 p-4 md:p-6 bg-slate-50 rounded-lg">
+            <h2 className="text-lg md:text-xl font-bold text-slate-900 mb-3 md:mb-4">Key Points</h2>
             <ul className="space-y-2">
               {lesson.keyPoints.map((point, index) => (
                 <li key={index} className="flex items-start">

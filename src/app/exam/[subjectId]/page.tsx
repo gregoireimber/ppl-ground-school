@@ -72,13 +72,13 @@ export default function ExamPage() {
   if (!examStarted && !examResult) {
     return (
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white border border-slate-200 rounded-lg p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">
+        <div className="bg-white border border-slate-200 rounded-lg p-5 md:p-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
             {subject.name} - Mock Exam
           </h1>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-            <h2 className="font-semibold text-blue-900 mb-3">Exam Information</h2>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
+            <h2 className="font-semibold text-blue-900 mb-3 text-sm md:text-base">Exam Information</h2>
             <div className="space-y-2 text-blue-800">
               <div className="flex justify-between">
                 <span>Questions:</span>
@@ -95,9 +95,9 @@ export default function ExamPage() {
             </div>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mb-6">
-            <h3 className="font-semibold text-slate-900 mb-3">Instructions</h3>
-            <ul className="text-sm text-slate-700 space-y-2">
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
+            <h3 className="font-semibold text-slate-900 mb-3 text-sm md:text-base">Instructions</h3>
+            <ul className="text-xs md:text-sm text-slate-700 space-y-2">
               <li>• Answer all questions within the time limit</li>
               <li>• You can navigate between questions and change your answers</li>
               <li>• Flag questions to review later if unsure</li>
@@ -106,16 +106,16 @@ export default function ExamPage() {
             </ul>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
             <button
               onClick={() => router.push('/exam')}
-              className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
+              className="px-5 py-2.5 md:py-3 border-2 border-slate-300 text-slate-700 rounded-lg text-sm md:text-base font-medium hover:bg-slate-50 transition-colors order-2 md:order-1"
             >
               Back to Exam Selection
             </button>
             <button
               onClick={() => setExamStarted(true)}
-              className="px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              className="px-5 py-2.5 md:py-3 bg-primary-600 text-white rounded-lg text-sm md:text-base font-medium hover:bg-primary-700 transition-colors order-1 md:order-2"
             >
               Start Exam
             </button>
@@ -148,16 +148,16 @@ export default function ExamPage() {
     return (
       <div className="max-w-4xl mx-auto">
         {/* Results header */}
-        <div className="bg-white border border-slate-200 rounded-lg p-8 mb-6">
-          <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Exam Complete!</h1>
+        <div className="bg-white border border-slate-200 rounded-lg p-5 md:p-8 mb-4 md:mb-6">
+          <div className="text-center mb-4 md:mb-6">
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Exam Complete!</h1>
             <p className="text-slate-600">{subject.name}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
             <div className="text-center">
               <div
-                className={`text-5xl font-bold mb-2 ${
+                className={`text-4xl md:text-5xl font-bold mb-2 ${
                   passed ? 'text-green-600' : 'text-red-600'
                 }`}
               >
@@ -212,22 +212,22 @@ export default function ExamPage() {
             </div>
           )}
 
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
             <button
               onClick={() => router.push('/exam')}
-              className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
+              className="px-5 py-2.5 border-2 border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"
             >
-              Back to Exam Selection
+              Exam Selection
             </button>
             <button
               onClick={() => router.push(`/subjects/${subjectId}`)}
-              className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-colors"
+              className="px-5 py-2.5 border-2 border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"
             >
               View Subject
             </button>
             <button
               onClick={handleRetake}
-              className="ml-auto px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              className="md:ml-auto px-5 py-2.5 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
             >
               Retake Exam
             </button>
@@ -235,8 +235,8 @@ export default function ExamPage() {
         </div>
 
         {/* All questions with answers */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-slate-900">Review All Questions</h2>
+        <div className="space-y-4 md:space-y-6">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900">Review All Questions</h2>
 
           {examResult.questions.map((question, idx) => {
             const answer = examResult.answers[idx];
@@ -245,34 +245,34 @@ export default function ExamPage() {
             return (
               <div
                 key={question.id}
-                className={`bg-white border-2 rounded-lg p-6 ${
+                className={`bg-white border-2 rounded-lg p-4 md:p-6 ${
                   isCorrect ? 'border-green-200' : 'border-red-200'
                 }`}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="text-sm text-slate-600 mb-2">Question {idx + 1}</div>
-                    <h3 className="text-lg font-semibold text-slate-900">
+                <div className="flex items-start justify-between mb-3 md:mb-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs md:text-sm text-slate-600 mb-1 md:mb-2">Question {idx + 1}</div>
+                    <h3 className="text-base md:text-lg font-semibold text-slate-900">
                       {question.stem}
                     </h3>
                   </div>
                   <div
-                    className={`ml-4 px-3 py-1 rounded-full text-sm font-semibold ${
+                    className={`ml-3 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-semibold shrink-0 ${
                       isCorrect
                         ? 'bg-green-100 text-green-700'
                         : 'bg-red-100 text-red-700'
                     }`}
                   >
-                    {isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                    {isCorrect ? '✓' : '✗'}
                   </div>
                 </div>
 
-                <div className="space-y-2 mb-4">
+                <div className="space-y-2 mb-3 md:mb-4">
                   {question.options.map((option) => {
                     const isUserAnswer = answer.selectedAnswer === option.id;
                     const isCorrectAnswer = option.id === question.correctAnswer;
 
-                    let cardClasses = 'p-3 border-2 rounded-lg ';
+                    let cardClasses = 'p-2.5 md:p-3 border-2 rounded-lg ';
 
                     if (isCorrectAnswer) {
                       cardClasses += 'border-green-500 bg-green-50';
@@ -284,19 +284,19 @@ export default function ExamPage() {
 
                     return (
                       <div key={option.id} className={cardClasses}>
-                        <div className="flex items-center">
-                          <span className="font-semibold text-slate-700 mr-3">
+                        <div className="flex items-start">
+                          <span className="font-semibold text-slate-700 mr-2 md:mr-3 shrink-0 text-sm">
                             {option.id.toUpperCase()}.
                           </span>
-                          <span className="text-slate-900">{option.text}</span>
+                          <span className="text-sm md:text-base text-slate-900">{option.text}</span>
                           {isCorrectAnswer && (
-                            <span className="ml-auto text-green-600 font-semibold">
-                              ✓ Correct Answer
+                            <span className="ml-auto text-green-600 font-semibold text-xs shrink-0">
+                              ✓
                             </span>
                           )}
                           {isUserAnswer && !isCorrect && (
-                            <span className="ml-auto text-red-600 font-semibold">
-                              Your Answer
+                            <span className="ml-auto text-red-600 font-semibold text-xs shrink-0">
+                              ✗
                             </span>
                           )}
                         </div>
@@ -305,9 +305,9 @@ export default function ExamPage() {
                   })}
                 </div>
 
-                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
-                  <h4 className="font-semibold text-slate-900 mb-2">Explanation:</h4>
-                  <p className="text-slate-700">{question.explanation}</p>
+                <div className="p-3 md:p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                  <h4 className="font-semibold text-slate-900 mb-1 md:mb-2 text-sm md:text-base">Explanation:</h4>
+                  <p className="text-sm md:text-base text-slate-700">{question.explanation}</p>
                 </div>
               </div>
             );

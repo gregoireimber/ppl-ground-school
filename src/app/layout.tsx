@@ -17,7 +17,7 @@ export default function RootLayout({
       <body className="antialiased">
         <div className="flex min-h-screen">
           <Navigation />
-          <main className="flex-1 p-8 bg-slate-50">
+          <main className="flex-1 pt-16 md:pt-0 px-4 py-6 md:p-8 bg-slate-50 min-w-0">
             {children}
           </main>
         </div>

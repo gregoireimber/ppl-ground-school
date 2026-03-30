@@ -79,9 +79,9 @@ export default function QuickQuizPage() {
 
       {!result ? (
         <>
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2">Quick Quiz</h1>
-            <p className="text-lg text-slate-600">
+          <div className="mb-4 md:mb-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-slate-900 mb-2">Quick Quiz</h1>
+            <p className="text-base md:text-lg text-slate-600">
               Test your knowledge with {QUESTIONS_PER_QUIZ} random questions from across all subjects
             </p>
           </div>
@@ -93,8 +93,8 @@ export default function QuickQuizPage() {
         </>
       ) : (
         <>
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold text-slate-900">Quick Quiz Results</h1>
+          <div className="mb-4 md:mb-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-slate-900">Quick Quiz Results</h1>
           </div>
           <QuizResults
             result={result}

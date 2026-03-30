@@ -126,38 +126,38 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
   return (
     <div className="max-w-5xl mx-auto">
       {/* Header with timer */}
-      <div className="sticky top-0 z-10 bg-white border-b border-slate-200 pb-4 mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h2 className="text-2xl font-bold text-slate-900">{subjectName} - Mock Exam</h2>
-            <p className="text-sm text-slate-600">
-              {questions.length} questions • Pass mark: {passMark}%
+      <div className="sticky top-14 md:top-0 z-10 bg-white border-b border-slate-200 pb-3 md:pb-4 mb-4 md:mb-6 -mx-4 px-4 md:mx-0 md:px-0 pt-2 md:pt-0">
+        <div className="flex items-center justify-between mb-3 md:mb-4">
+          <div className="min-w-0 flex-1">
+            <h2 className="text-lg md:text-2xl font-bold text-slate-900 truncate">{subjectName} - Mock Exam</h2>
+            <p className="text-xs md:text-sm text-slate-600">
+              {questions.length} questions &bull; Pass: {passMark}%
             </p>
           </div>
-          <div className="text-right">
+          <div className="text-right ml-3 shrink-0">
             <div
-              className={`text-3xl font-bold ${
+              className={`text-2xl md:text-3xl font-bold tabular-nums ${
                 isTimeLow ? 'text-red-600 animate-pulse' : 'text-slate-900'
               }`}
             >
               {formatTime(timeRemaining)}
             </div>
-            <p className="text-sm text-slate-600">Time remaining</p>
+            <p className="text-xs md:text-sm text-slate-600">Time left</p>
           </div>
         </div>
 
         {/* Question navigation */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
           {questions.map((q, idx) => {
             const isAnswered = answers.has(q.id);
             const isFlagged = flaggedQuestions.has(q.id);
             const isCurrent = idx === currentIndex;
 
             let btnClasses =
-              'w-10 h-10 rounded-full font-semibold transition-all duration-200 ';
+              'w-8 h-8 md:w-10 md:h-10 text-xs md:text-sm rounded-full font-semibold transition-all duration-200 ';
 
             if (isCurrent) {
-              btnClasses += 'ring-2 ring-primary-500 ring-offset-2 ';
+              btnClasses += 'ring-2 ring-primary-500 ring-offset-1 md:ring-offset-2 ';
             }
 
             if (isFlagged) {
@@ -191,13 +191,13 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
         <div className="flex gap-2">
           <button
             onClick={() => setShowReviewPanel(!showReviewPanel)}
-            className="px-4 py-2 border-2 border-slate-300 rounded-lg font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+            className="px-3 md:px-4 py-2 border-2 border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
           >
-            {showReviewPanel ? 'Hide' : 'Show'} Review Panel
+            {showReviewPanel ? 'Hide' : 'Review'}
           </button>
           <button
             onClick={handleSubmitClick}
-            className="ml-auto px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+            className="ml-auto px-4 md:px-6 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
           >
             Submit Exam
           </button>
@@ -206,9 +206,9 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
 
       {/* Review panel */}
       {showReviewPanel && (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6">
-          <h3 className="font-semibold text-slate-900 mb-3">Question Status</h3>
-          <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 md:p-4 mb-4 md:mb-6">
+          <h3 className="font-semibold text-slate-900 mb-2 md:mb-3 text-sm md:text-base">Question Status</h3>
+          <div className="grid grid-cols-3 gap-3 md:gap-4 text-xs md:text-sm">
             <div>
               <span className="font-medium text-slate-700">Answered:</span>{' '}
               <span className="text-slate-900">{answers.size}</span>
@@ -226,17 +226,17 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
       )}
 
       {/* Question card */}
-      <div className="bg-white border border-slate-200 rounded-lg p-6 mb-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <div className="text-sm text-slate-600 mb-2">
+      <div className="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
+        <div className="flex items-start justify-between mb-3 md:mb-4">
+          <div className="flex-1 min-w-0">
+            <div className="text-xs md:text-sm text-slate-600 mb-1 md:mb-2">
               Question {currentIndex + 1} of {questions.length}
             </div>
-            <h3 className="text-lg font-semibold text-slate-900">{currentQuestion.stem}</h3>
+            <h3 className="text-base md:text-lg font-semibold text-slate-900">{currentQuestion.stem}</h3>
           </div>
           <button
             onClick={handleToggleFlag}
-            className={`ml-4 p-2 rounded-lg transition-colors ${
+            className={`ml-3 p-2 rounded-lg transition-colors shrink-0 ${
               flaggedQuestions.has(currentQuestion.id)
                 ? 'bg-orange-100 text-orange-600'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -258,12 +258,12 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
           </button>
         </div>
 
-        <div className="space-y-3 mt-6">
+        <div className="space-y-2 md:space-y-3 mt-4 md:mt-6">
           {currentQuestion.options.map((option) => {
             const isSelected = answers.get(currentQuestion.id) === option.id;
 
             let cardClasses =
-              'p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ';
+              'p-3 md:p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ';
 
             if (isSelected) {
               cardClasses += 'border-primary-500 bg-primary-50';
@@ -277,13 +277,13 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
                 onClick={() => handleOptionClick(option.id)}
                 className={cardClasses}
               >
-                <div className="flex items-center">
-                  <span className="font-semibold text-slate-700 mr-3">
+                <div className="flex items-start">
+                  <span className="font-semibold text-slate-700 mr-2 md:mr-3 shrink-0">
                     {option.id.toUpperCase()}.
                   </span>
-                  <span className="text-slate-900">{option.text}</span>
+                  <span className="text-sm md:text-base text-slate-900">{option.text}</span>
                   {isSelected && (
-                    <span className="ml-auto text-primary-600 font-semibold">Selected</span>
+                    <span className="ml-auto text-primary-600 font-semibold text-xs md:text-sm shrink-0">Selected</span>
                   )}
                 </div>
               </div>
@@ -293,22 +293,22 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
       </div>
 
       {/* Navigation buttons */}
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-3">
         <button
           onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
           disabled={currentIndex === 0}
-          className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 md:px-6 py-2.5 md:py-3 border-2 border-slate-300 text-slate-700 rounded-lg text-sm md:text-base font-medium hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          ← Previous
+          &larr; Prev
         </button>
         <button
           onClick={() =>
             setCurrentIndex(Math.min(questions.length - 1, currentIndex + 1))
           }
           disabled={currentIndex === questions.length - 1}
-          className="px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 md:px-6 py-2.5 md:py-3 border-2 border-slate-300 text-slate-700 rounded-lg text-sm md:text-base font-medium hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          Next →
+          Next &rarr;
         </button>
       </div>
 
