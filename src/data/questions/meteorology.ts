@@ -68,7 +68,7 @@ export const meteorologyQuestions: Question[] = [
   {
     id: 'met-005',
     subjectId: 'meteorology',
-    topicId: 'metar-taf',
+    topicId: 'weather-systems',
     stem: 'In a METAR, what does "9999" indicate?',
     options: [
       { id: 'a', text: 'Visibility is 9,999 meters' },
