@@ -3,3 +3,4 @@ export type { Topic } from './topic';
 export type { Lesson, ContentBlock } from './lesson';
 export type { Question, QuestionOption } from './question';
 export type { UserProgress, SubjectProgress, QuizAttempt, LessonProgress } from './progress';
+export type { QuizResult, QuizAnswer } from './quiz';

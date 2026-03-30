@@ -333,3 +333,7 @@ export const subjects: Subject[] = [
 export function getSubjectById(id: string): Subject | undefined {
   return subjects.find((s) => s.id === id);
 }
+
+export function getAllSubjects(): Subject[] {
+  return subjects;
+}
