@@ -4,6 +4,10 @@ import { operationalProceduresQuestions } from './operational-procedures';
 import { humanPerformanceQuestions } from './human-performance';
 import { navigationQuestions } from './navigation';
 import { meteorologyQuestions } from './meteorology';
+import { aircraftGeneralQuestions } from './aircraft-general';
+import { flightPerformanceQuestions } from './flight-performance';
+import { communicationsQuestions } from './communications';
+import { principlesOfFlightQuestions } from './principles-of-flight';
 
 // All questions indexed by ID
 const allQuestions = [
@@ -12,6 +16,10 @@ const allQuestions = [
   ...humanPerformanceQuestions,
   ...navigationQuestions,
   ...meteorologyQuestions,
+  ...aircraftGeneralQuestions,
+  ...flightPerformanceQuestions,
+  ...communicationsQuestions,
+  ...principlesOfFlightQuestions,
 ];
 
 const questionRegistry: Record<string, Question> = {};
@@ -40,4 +48,14 @@ export function getAllQuestions(): Question[] {
 }
 
 // Export individual question sets for direct import if needed
-export { airLawQuestions, operationalProceduresQuestions, humanPerformanceQuestions, navigationQuestions, meteorologyQuestions };
+export {
+  airLawQuestions,
+  operationalProceduresQuestions,
+  humanPerformanceQuestions,
+  navigationQuestions,
+  meteorologyQuestions,
+  aircraftGeneralQuestions,
+  flightPerformanceQuestions,
+  communicationsQuestions,
+  principlesOfFlightQuestions
+};
