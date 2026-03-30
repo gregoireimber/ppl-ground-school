@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Question, QuizResult, QuizAnswer } from '@/types';
 
 interface ExamEngineProps {
@@ -19,6 +19,7 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
   const [startTime] = useState(new Date().toISOString());
   const [showSubmitDialog, setShowSubmitDialog] = useState(false);
   const [showReviewPanel, setShowReviewPanel] = useState(false);
+  const hasSubmittedRef = useRef(false);
 
   // Handle empty questions array
   if (questions.length === 0) {
@@ -33,13 +34,44 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
 
   const currentQuestion = questions[currentIndex];
 
+  // Memoized submit function to prevent double submit
+  const submitExam = useCallback(() => {
+    // Prevent double submission
+    if (hasSubmittedRef.current) return;
+    hasSubmittedRef.current = true;
+
+    const quizAnswers: QuizAnswer[] = questions.map((q) => {
+      const selectedAnswer = answers.get(q.id) || '';
+      return {
+        questionId: q.id,
+        selectedAnswer,
+        correct: selectedAnswer === q.correctAnswer,
+      };
+    });
+
+    const correctCount = quizAnswers.filter((a) => a.correct).length;
+    const score = Math.round((correctCount / questions.length) * 100);
+
+    const result: QuizResult = {
+      questions,
+      answers: quizAnswers,
+      score,
+      totalQuestions: questions.length,
+      correctCount,
+      timeStarted: startTime,
+      timeCompleted: new Date().toISOString(),
+    };
+
+    onComplete(result);
+  }, [questions, answers, startTime, onComplete]);
+
   // Timer countdown
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          handleAutoSubmit();
+          submitExam();
           return 0;
         }
         return prev - 1;
@@ -47,7 +79,7 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [submitExam]);
 
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
@@ -84,36 +116,6 @@ export function ExamEngine({ questions, timeLimit, passMark, onComplete, subject
 
   const handleSubmitClick = () => {
     setShowSubmitDialog(true);
-  };
-
-  const handleAutoSubmit = () => {
-    submitExam();
-  };
-
-  const submitExam = () => {
-    const quizAnswers: QuizAnswer[] = questions.map((q) => {
-      const selectedAnswer = answers.get(q.id) || '';
-      return {
-        questionId: q.id,
-        selectedAnswer,
-        correct: selectedAnswer === q.correctAnswer,
-      };
-    });
-
-    const correctCount = quizAnswers.filter((a) => a.correct).length;
-    const score = Math.round((correctCount / questions.length) * 100);
-
-    const result: QuizResult = {
-      questions,
-      answers: quizAnswers,
-      score,
-      totalQuestions: questions.length,
-      correctCount,
-      timeStarted: startTime,
-      timeCompleted: new Date().toISOString(),
-    };
-
-    onComplete(result);
   };
 
   const handleConfirmSubmit = () => {

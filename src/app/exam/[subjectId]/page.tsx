@@ -64,10 +64,8 @@ export default function ExamPage() {
   };
 
   const handleRetake = () => {
-    // Reload the page to get new questions
-    router.refresh();
-    setExamStarted(false);
-    setExamResult(null);
+    // Reload the page to get new questions and reset state
+    window.location.reload();
   };
 
   // Show start screen
