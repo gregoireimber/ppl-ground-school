@@ -68,6 +68,18 @@ export function Navigation() {
                 Quick Quiz
               </Link>
             </li>
+            <li>
+              <Link
+                href="/exam"
+                className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  pathname?.startsWith('/exam')
+                    ? 'bg-primary-100 text-primary-700'
+                    : 'text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Mock Exams
+              </Link>
+            </li>
           </ul>
         </div>
 
