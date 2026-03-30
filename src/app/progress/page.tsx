@@ -146,7 +146,8 @@ export default function ProgressPage() {
           <div className="space-y-3">
             {recentAttempts.map((attempt, index) => {
               const subject = allSubjects.find((s) => s.id === attempt.subjectId);
-              const passed = subject ? attempt.score >= subject.examInfo.passMark : false;
+              const passMark = subject ? subject.examInfo.passMark : 75;
+              const passed = attempt.score >= passMark;
               const attemptDate = new Date(attempt.date);
 
               return (

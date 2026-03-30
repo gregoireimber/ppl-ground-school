@@ -16,6 +16,17 @@ export function QuizEngine({ questions, onComplete, title = 'Quiz' }: QuizEngine
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [startTime] = useState(new Date().toISOString());
 
+  // Handle empty questions array
+  if (questions.length === 0) {
+    return (
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-white border border-slate-200 rounded-lg p-8 text-center">
+          <p className="text-slate-600">No questions available for this quiz.</p>
+        </div>
+      </div>
+    );
+  }
+
   const currentQuestion = questions[currentIndex];
   const isLastQuestion = currentIndex === questions.length - 1;
 

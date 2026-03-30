@@ -17,6 +17,12 @@ export default function QuickQuizPage() {
 
   const initializeQuiz = () => {
     const allQuestions = getAllQuestions();
+
+    if (allQuestions.length === 0) {
+      setQuizQuestions([]);
+      return;
+    }
+
     const selectedQuestions = randomSample(allQuestions, QUESTIONS_PER_QUIZ);
 
     // Shuffle the questions and also shuffle options within each question

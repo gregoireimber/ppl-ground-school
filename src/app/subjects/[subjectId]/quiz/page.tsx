@@ -25,6 +25,11 @@ export default function SubjectQuizPage({
   const initializeQuiz = () => {
     const allSubjectQuestions = getQuestionsBySubject(subjectId);
 
+    if (allSubjectQuestions.length === 0) {
+      setQuizQuestions([]);
+      return;
+    }
+
     // Select questions (all if fewer than 20, or random 20 if more)
     const selectedQuestions =
       allSubjectQuestions.length <= MAX_QUESTIONS_PER_QUIZ
