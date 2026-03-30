@@ -1,5 +1,9 @@
 import { Subject } from '@/types';
 import { rulesOfTheAirBasics } from './lessons/air-law/rules-of-the-air-basics';
+import { emergencyProceduresBasics } from './lessons/operational-procedures/emergency-procedures-basics';
+import { aviationPhysiologyBasics } from './lessons/human-performance/aviation-physiology-basics';
+import { deadReckoningBasics } from './lessons/navigation/dead-reckoning-basics';
+import { weatherSystemsBasics } from './lessons/meteorology/weather-systems-basics';
 
 export const subjects: Subject[] = [
   {
@@ -51,7 +55,36 @@ export const subjects: Subject[] = [
       timeLimit: 30,
       passMark: 75,
     },
-    topics: [],
+    topics: [
+      {
+        id: 'emergency-procedures',
+        subjectId: 'operational-procedures',
+        name: 'Emergency Procedures',
+        description: 'Distress and urgency procedures, radio failure, engine failure',
+        lessons: [emergencyProceduresBasics],
+      },
+      {
+        id: 'airfield-operations',
+        subjectId: 'operational-procedures',
+        name: 'Airfield Operations',
+        description: 'Taxiing, runway operations, and airfield lighting',
+        lessons: [],
+      },
+      {
+        id: 'pre-flight-procedures',
+        subjectId: 'operational-procedures',
+        name: 'Pre-Flight Procedures',
+        description: 'Aircraft inspection, fuel planning, and documentation',
+        lessons: [],
+      },
+      {
+        id: 'fuel-management',
+        subjectId: 'operational-procedures',
+        name: 'Fuel Management',
+        description: 'Fuel planning, reserves, and endurance calculations',
+        lessons: [],
+      },
+    ],
   },
   {
     id: 'human-performance',
@@ -62,7 +95,29 @@ export const subjects: Subject[] = [
       timeLimit: 25,
       passMark: 75,
     },
-    topics: [],
+    topics: [
+      {
+        id: 'aviation-physiology',
+        subjectId: 'human-performance',
+        name: 'Aviation Physiology',
+        description: 'Hypoxia, hyperventilation, spatial disorientation, and visual illusions',
+        lessons: [aviationPhysiologyBasics],
+      },
+      {
+        id: 'decision-making',
+        subjectId: 'human-performance',
+        name: 'Decision Making',
+        description: 'Hazardous attitudes, crew resource management, and risk assessment',
+        lessons: [],
+      },
+      {
+        id: 'fitness-to-fly',
+        subjectId: 'human-performance',
+        name: 'Fitness to Fly',
+        description: 'Medical factors, alcohol, fatigue, and the IMSAFE checklist',
+        lessons: [],
+      },
+    ],
   },
   {
     id: 'navigation',
@@ -73,7 +128,29 @@ export const subjects: Subject[] = [
       timeLimit: 45,
       passMark: 75,
     },
-    topics: [],
+    topics: [
+      {
+        id: 'dead-reckoning',
+        subjectId: 'navigation',
+        name: 'Dead Reckoning',
+        description: 'Chart reading, wind triangle, PLOG preparation, and DR navigation',
+        lessons: [deadReckoningBasics],
+      },
+      {
+        id: 'chart-reading',
+        subjectId: 'navigation',
+        name: 'Chart Reading',
+        description: 'Chart symbols, scale, airspace depiction, and VRPs',
+        lessons: [],
+      },
+      {
+        id: 'radio-navigation',
+        subjectId: 'navigation',
+        name: 'Radio Navigation',
+        description: 'VOR, NDB, GPS, and other navigation aids',
+        lessons: [],
+      },
+    ],
   },
   {
     id: 'meteorology',
@@ -84,7 +161,36 @@ export const subjects: Subject[] = [
       timeLimit: 50,
       passMark: 75,
     },
-    topics: [],
+    topics: [
+      {
+        id: 'weather-systems',
+        subjectId: 'meteorology',
+        name: 'Weather Systems',
+        description: 'Pressure systems, fronts, and UK weather patterns',
+        lessons: [weatherSystemsBasics],
+      },
+      {
+        id: 'metar-taf',
+        subjectId: 'meteorology',
+        name: 'METAR and TAF',
+        description: 'Weather reports and forecasts interpretation',
+        lessons: [],
+      },
+      {
+        id: 'vfr-weather',
+        subjectId: 'meteorology',
+        name: 'VFR Weather Minima',
+        description: 'Visibility, cloud base, and VFR flight requirements',
+        lessons: [],
+      },
+      {
+        id: 'weather-hazards',
+        subjectId: 'meteorology',
+        name: 'Weather Hazards',
+        description: 'Icing, turbulence, fog, and thunderstorms',
+        lessons: [],
+      },
+    ],
   },
   {
     id: 'aircraft-general',
